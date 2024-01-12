@@ -1,0 +1,34 @@
+.done {
+    text-decoration:line-through
+}
+
+.unDone {
+    text-decoration:none;
+}
+
+.item {
+    display:flex;
+    width:100%;
+    align-items:center;
+    justify-content:space-around;
+    padding:10px;
+    background-color:#e8e8e8;
+}
+
+.title {
+    width:50%;
+}
+
+.itemButtonSection {
+    width:50%;
+    display:flex;
+    gap:10px;
+}
+
+.itemButtonSection button {
+    width:200px;
+    height:auto;
+    padding:10px;
+    color:blueviolet;
+    font-size:20px;
+}
