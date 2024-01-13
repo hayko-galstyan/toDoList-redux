@@ -29,6 +29,9 @@
     width:200px;
     height:auto;
     padding:10px;
-    color:blueviolet;
+    color:white;
+    background-color:#da9e2f;
+    border:none;
+    border-radius:5px;
     font-size:20px;
 }

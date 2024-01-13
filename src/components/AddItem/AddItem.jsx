@@ -1,9 +1,9 @@
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import {useState} from 'react';
 import styles from './styles.module.css';
-import { addItem } from "../../redux/actions";
-const AddItem = (props) => {
-    const {dispatch} = props;
+import { addItem } from "../../redux/todos/actions";
+const AddItem = () => {
+    const dispatch = useDispatch();
     const [text,setText] = useState("")
     const handlePress = (e) => {
         if(e.key === 'Enter'){
@@ -21,4 +21,4 @@ const AddItem = (props) => {
         </div>
     )
 }
-export default connect()(AddItem);
+export default AddItem;

@@ -1,8 +1,8 @@
 import styles from './style.module.css';
-import {connect} from 'react-redux';
-import {makeCompleted,makeActiveAgain,deleteTaskItem} from '../../redux/actions';
+import {useDispatch,connect} from 'react-redux';
+import {makeCompleted,makeActiveAgain,deleteTaskItem} from '../../redux/todos/actions';
 const ToDoItem = ({task,...props}) => {
-    const {dispatch} = props;
+    const {enable,disable,deleteItem} = props;
     const currentClass = task.completed ? styles.done : styles.unDone
     return(
         <div className={styles.item}>
@@ -12,12 +12,19 @@ const ToDoItem = ({task,...props}) => {
             <div className={styles.itemButtonSection}>
             {
                 task.completed 
-                ? <button onClick = {()=>dispatch(makeActiveAgain(task.id))}>unDone</button>
-                : <button onClick = {()=>dispatch(makeCompleted(task.id))}>Done</button>
+                ? <button onClick = {()=>enable(task.id)}>Activate</button>
+                : <button onClick = {()=>disable(task.id)}>Done</button>
             }
-            <button onClick={()=>dispatch(deleteTaskItem(task.id))}>Delete</button>
+            <button onClick={()=>deleteItem(task.id)}>x</button>
             </div>
         </div>
     )
 }
-export default connect()(ToDoItem);
+const mapDispatchToProps = dispatch => {
+    return {
+        enable:(id)=>dispatch(makeActiveAgain(id)),
+        disable:(id)=>dispatch(makeCompleted(id)),
+        deleteItem:(id)=>dispatch(deleteTaskItem(id))
+    }
+}
+export default connect(null,mapDispatchToProps)(ToDoItem);
